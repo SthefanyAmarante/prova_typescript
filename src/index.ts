@@ -17,7 +17,7 @@ const estudante: Estudante[]=[
     {id:24, name:"regiscreudiliane", borrowedBooks:1},
     {id:25, name:"jurandinoswaldir", borrowedBooks:0}
 ]
-const rentals: Aluguel[] = [ {studentId: 23, bookIds :[4], date: new Date(Date.now())},
+const alugueis: Aluguel[] = [ {studentId: 23, bookIds :[4], date: new Date(Date.now())},
 {studentId: 24, bookIds :[1], date: new Date(Date.now())}
 
 ];
@@ -47,7 +47,7 @@ function findStudentById(id: number): Estudante| undefined{
    function sortBooksByYear(): Livro[] {
     return livro.sort((a, b) => b.year - a.year);}
 // ===> função que, dado o nome de um autor, retorna o número total de livros desse autor disponíveis na biblioteca.
-    function getTotalBooksByAuthor(livros: Array<Livro>, autor:string):number{
+    function getTotalBooksByAuthor(livros: Livro[], autor:string):number{
         return livros.reduce((count, book) => 
         {
             if (book.author === autor && book.available){
@@ -86,7 +86,7 @@ function findStudentById(id: number): Estudante| undefined{
             book.available=false;
         }
         student.borrowedBooks += bookIds.length;
-        rentals.push({studentId, bookIds, date: new Date()});
+        alugueis.push({studentId, bookIds, date: new Date()});
     }
 
     return 'Livros alugados com sucesso'
@@ -102,17 +102,17 @@ const BookTitles = getBookTitles();
 
 //exemplos praticos
 
-//console.log('livros disponiveis para aluguel: ', AvaliableBooks);
+console.log('livros disponiveis para aluguel: ', AvaliableBooks);
 //console.log('titulos: ', BookTitles);
 //console.log('livros mais recentes aos mais antigos: ', BookTitles);
 //console.log(result);
 //console.log(result2);
-console.log('__________________________________________')
-console.log(rentals)
-//console.log(AvaliableBooks)
-//console.log(FindBook)
-//console.log(FindStudent)
-//console.log(BookasByAuthor);
+//console.log('__________________________________________')
+//console.log('total de alugueis: ',rentals);
+//console.log('dados do livro selecionado: ',FindBook);
+//console.log('dados do(a)estudante selecionado é : ',FindStudent);
+//console.log('O numero de livros do autor selecionado presentes na bibioteca é:',BookasByAuthor);
+//anotações sobre clean code, primeiro erro encontrado no meu codigo é o tamanho das minhas funções
 // /\  ,,, /\ ┏━━━━━━━━━━━━━━┓
 //(  ̳• · • ̳)|♡ typescript ♡| 
 //       づ   ┗━━━━━━━━━━━━━━┛
